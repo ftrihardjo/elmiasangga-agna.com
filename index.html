@@ -5,39 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - Elmiasangga Agna</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
             color: #333;
+            background: #fafafa;
         }
         .header {
             text-align: center;
-            border-bottom: 2px solid #0066cc;
+            border-bottom: 3px solid #0052cc;
             padding-bottom: 20px;
             margin-bottom: 30px;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .contact-card {
-            background: #f5f5f5;
-            padding: 20px;
+        .header h1 {
+            color: #0052cc;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .card {
+            background: white;
+            padding: 25px;
             border-radius: 8px;
             margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: #0052cc;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .card h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
         .contact-item {
             margin: 15px 0;
         }
         .label {
             font-weight: bold;
-            color: #0066cc;
+            color: #0052cc;
+            display: block;
+            margin-bottom: 5px;
         }
         a {
-            color: #0066cc;
+            color: #0052cc;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .use-cases {
+            background: #deebff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .use-cases strong {
+            color: #0052cc;
+        }
+        .pricing-badge {
+            display: inline-block;
+            background: #00875a;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-overview {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #555;
+        }
+        .permissions-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -81,6 +162,61 @@
     <div class="card">
         <h2>📊 Product Information</h2>
 
+        <h3>Portfolio Manager for Jira</h3>
+        <p class="product-overview">
+            A powerful Jira Forge application designed to give project managers and team leads a comprehensive, high-level view of their project portfolios.
+            Seamlessly integrated into your Jira environment, it provides interactive dashboards for project health, dependency tracking, and epic roadmaps.
+        </p>
+
+        <span class="pricing-badge">✓ Available on Jira Marketplace</span>
+
+        <h3>Key Features</h3>
+        <ul class="feature-list">
+            <li><strong>Projects Dashboard</strong> – View all projects at a glance with real-time statistics on total, in-progress, done, and blocked issues.</li>
+            <li><strong>Dependency Visualization</strong> – Track issue links (Epics & Stories) across projects with built-in <strong>circular dependency detection</strong>.</li>
+            <li><strong>Roadmap Timeline</strong> – Visualize Epic timelines with start and due dates, including automatic detection of <strong>overlapping schedules</strong>.</li>
+            <li><strong>Advanced Filtering & Sorting</strong> – Filter by project lead, status, date ranges, and search by project name or key. Sort data by any column.</li>
+            <li><strong>Real-Time Stats</strong> – Automatically refreshes project statistics in the background to ensure you always have the latest data.</li>
+            <li><strong>Accessibility First</strong> – Full keyboard navigation, screen reader announcements, and Right-to-Left (RTL) language support.</li>
+        </ul>
+
+        <div class="use-cases">
+            <strong>Perfect For:</strong>
+            <p>PMO Teams • Program Managers • Agile Release Trains • Cross-Project Dependency Tracking • Executive Reporting</p>
+        </div>
+
+        <h3>How It Works</h3>
+        <ol style="padding-left: 20px; line-height: 2;">
+            <li>Install "Portfolio Manager for Jira" from the Jira Marketplace as a Forge app.</li>
+            <li>Grant the necessary permissions to access your Jira projects and issues.</li>
+            <li>Open the app from your Jira application menu.</li>
+            <li>Navigate between <strong>Projects</strong>, <strong>Dependencies</strong>, and <strong>Roadmap</strong> tabs to analyze your portfolio.</li>
+            <li>Use advanced filters to drill down into specific project leads, statuses, or date ranges.</li>
+        </ol>
+
+        <div class="card">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <h3>Q: Does this app work with Jira Server or Data Center?</h3>
+            <p>A: Currently, Portfolio Manager is built as a Jira Forge app, which means it is exclusively available for <strong>Jira Cloud</strong>.</p>
+
+            <h3>Q: What permissions does the app require?</h3>
+            <p>A: The app requires read access to your Jira projects, issues, and issue links. It does not modify any of your Jira data. All processing happens securely within Atlassian's Forge infrastructure.</p>
+
+            <h3>Q: How does the "Circular Dependency" warning work?</h3>
+            <p>A: In the Dependencies tab, the app analyzes the issue links between Epics and Stories. If it detects a loop (e.g., Issue A blocks Issue B, which blocks Issue A), it will display a warning banner to help you resolve the logical conflict.</p>
+
+            <h3>Q: Can I filter projects by specific dates?</h3>
+            <p>A: Yes! The Projects and Roadmap tabs include date range filters. You can filter to see only projects or epics that overlap with a specific start and end date.</p>
+
+            <h3>Q: Why are some project stats showing "..." or taking time to load?</h3>
+            <p>A: The app fetches real-time statistics for each project. If you have a large number of projects, it may take a few moments to query Jira for all the issue counts. The data refreshes automatically in the background.</p>
+        </div>
+
+        <div class="permissions-note">
+            <strong>🔒 Permissions & Security:</strong> As a Jira Forge app, Portfolio Manager for Jira runs on Atlassian's secure infrastructure. It only requests read access to project metadata, issue details, and issue links to generate your portfolio views. No data is stored outside of Atlassian's environment.
+        </div>
+
         <h3>GanttManagementSheet - Project and Task Planning</h3>
         <p class="product-overview">
             Transform your Google Sheets™ into a dynamic project management tool with this powerful Gantt Chart add-on.
@@ -114,15 +250,28 @@
             <li>Share and collaborate with your team!</li>
         </ol>
 
+        <div class="card">
+            <h2>❓ Asked Questions</h2>
+
+            <h3>Q: Is GanttManagementSheet free to use?</h3>
+            <p>A: Yes! The core features are completely free. We also offer premium features for advanced users.</p>
+
+            <h3>Q: Do I need coding skills to use this add-on?</h3>
+            <p>A: Not at all! GanttManagementSheet is designed to be user-friendly with no coding required. Simply install, configure, and generate charts.</p>
+
+            <h3>Q: Can I use this with my existing Google Sheets?</h3>
+            <p>A: Absolutely! You can use it with any existing spreadsheet or create a new one specifically for project management.</p>
+
+            <h3>Q: How do I install the add-on?</h3>
+            <p>A: Go to Google Workspace Marketplace, search for "GanttManagementSheet", and click "Install". It will be available in your Google Sheets under Extensions menu.</p>
+
+            <h3>Q: Is my data secure?</h3>
+            <p>A: Yes, your data remains in your Google Sheets and is not stored on external servers. We only access the data necessary to generate Gantt charts.</p>
+        </div>
+
         <div class="permissions-note">
             <strong>🔒 Privacy & Permissions:</strong> This add-on requires access to view and manage spreadsheets where it's installed, send emails on your behalf (for notifications), and connect to external services for enhanced functionality. Your data remains secure and is never shared with third parties.
         </div>
-
-        <p style="margin-top: 20px;">
-            <strong>Developer:</strong> Felix Otto Trihardjo<br>
-            <strong>Last Updated:</strong> June 5, 2026<br>
-            <strong>Platform:</strong> Google Workspace Marketplace
-        </p>
     </div>
 </body>
 </html>
