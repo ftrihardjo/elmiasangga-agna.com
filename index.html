@@ -10,116 +10,14 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
             line-height: 1.6;
             color: #333;
-            background: #fafafa;
+            scroll-behavior: smooth;
         }
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #0052cc;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            background: white;
-            padding: 30px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .header h1 {
-            color: #0052cc;
-            margin-bottom: 10px;
-        }
-        .header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .card h2 {
-            color: #0052cc;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-        .card h3 {
-            color: #333;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        .contact-item {
-            margin: 15px 0;
-        }
-        .label {
-            font-weight: bold;
-            color: #0052cc;
-            display: block;
-            margin-bottom: 5px;
-        }
-        a {
-            color: #0052cc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        .feature-list li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-        .feature-list li:before {
-            content: "✅";
-            position: absolute;
-            left: 0;
-        }
-        .use-cases {
-            background: #deebff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        .use-cases strong {
-            color: #0052cc;
-        }
-        .pricing-badge {
-            display: inline-block;
-            background: #00875a;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .product-overview {
-            font-size: 1.05em;
-            line-height: 1.8;
-            color: #555;
-        }
-        .permissions-note {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 15px 0;
-            font-size: 0.95em;
-        }
+
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
@@ -131,190 +29,760 @@
                 box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
             }
         }
-        .button {
-            display: inline-block;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+
+        /* Sticky Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             text-decoration: none;
-            letter-spacing: 0.5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Table of Contents Sidebar */
+        .toc-sidebar {
+            position: fixed;
+            right: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 1001;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .toc-sidebar.open {
+            right: 0;
+        }
+
+        .toc-sidebar h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin: 0.5rem 0;
+        }
+
+        .toc-list a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .toc-list a:hover {
+            background: #f0f0f0;
+            color: #667eea;
+            padding-left: 1rem;
+        }
+
+        .toc-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .toc-overlay.show {
+            display: block;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            color: #764ba2;
+            margin: 2rem 0 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .contact-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
             animation: pulse 2s infinite;
         }
 
-        .button:hover {
-            background: linear-gradient(135deg, #218838 0%, #1ba87e 100%);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.6);
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
         }
 
-        .button:active {
-            transform: translateY(-1px) scale(0.98);
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+        .btn-secondary {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
         }
 
-        .button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+        .btn-secondary:hover {
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .faq-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: none;
+            font-size: 1.5rem;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 1002;
+            transition: width 0.1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .toc-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        /* Alert Box */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Support Center</h1>
-        <p>Elmiasangga Agna</p>
-    </div>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-    <div class="contact-card">
-        <h2>Contact Information</h2>
-
-        <div class="contact-item">
-            <span class="label">Support Email:</span><br>
-            <a href="mailto:support@elmiasangga-agna.com">support@elmiasangga-agna.com</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>🏢</span>
+                <span>Elmiasangga Agna Support</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleTOC()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio Manager</a></li>
+                <li><a href="#gantt" class="nav-link">Gantt Sheet</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <div class="contact-item">
-            <span class="label">Organization:</span><br>
-            Elmiasangga Agna
-        </div>
-
-        <div class="contact-item">
-            <span class="label">Website:</span><br>
-            <a href="https://elmiasangga-agna.com">elmiasangga-agna.com</a>
-        </div>
-    </div>
-
-    <div class="contact-card">
-        <h2>Business Hours</h2>
-        <p>Monday - Sunday: Open 24 Hours</p>
-    </div>
-    
-
-    <div class="contact-card">
-        <h2>Response Time</h2>
-        <p>We aim to respond to all support inquiries within 24-48 business hours.</p>
-    </div>
-
-    <!-- Product Information Section -->
-    <div class="card">
-        <h2>📊 Product Information</h2>
-
-        <h3>Portfolio Manager for Jira</h3>
-        <p class="product-overview">
-            A powerful Jira Forge application designed to give project managers and team leads a comprehensive, high-level view of their project portfolios.
-            Seamlessly integrated into your Jira environment, it provides interactive dashboards for project health, dependency tracking, and epic roadmaps.
-        </p>
-
-        <button class="button" onclick="window.location.href='https://marketplace.atlassian.com/apps/1862931111'">✓ Available on Jira Marketplace</button>
-
-        <h3>Key Features</h3>
-        <ul class="feature-list">
-            <li><strong>Projects Dashboard</strong> – View all projects at a glance with real-time statistics on total, in-progress, done, and blocked issues.</li>
-            <li><strong>Dependency Visualization</strong> – Track issue links (Epics & Stories) across projects with built-in <strong>circular dependency detection</strong>.</li>
-            <li><strong>Roadmap Timeline</strong> – Visualize Epic timelines with start and due dates, including automatic detection of <strong>overlapping schedules</strong>.</li>
-            <li><strong>Advanced Filtering & Sorting</strong> – Filter by project lead, status, date ranges, and search by project name or key. Sort data by any column.</li>
-            <li><strong>Real-Time Stats</strong> – Automatically refreshes project statistics in the background to ensure you always have the latest data.</li>
-            <li><strong>Accessibility First</strong> – Full keyboard navigation, screen reader announcements, and Right-to-Left (RTL) language support.</li>
+    <!-- Table of Contents Sidebar -->
+    <div class="toc-overlay" id="tocOverlay" onclick="toggleTOC()"></div>
+    <aside class="toc-sidebar" id="tocSidebar">
+        <h3>📑 Quick Navigation</h3>
+        <ul class="toc-list">
+            <li><a href="#home" onclick="toggleTOC()">🏠 Home</a></li>
+            <li><a href="#contact" onclick="toggleTOC()">📞 Contact Information</a></li>
+            <li><a href="#business-hours" onclick="toggleTOC()">🕐 Business Hours</a></li>
+            <li><a href="#portfolio" onclick="toggleTOC()">💼 Portfolio Manager for Jira</a></li>
+            <li><a href="#portfolio-features" onclick="toggleTOC()">✨ Key Features</a></li>
+            <li><a href="#portfolio-how" onclick="toggleTOC()"> How It Works</a></li>
+            <li><a href="#gantt" onclick="toggleTOC()">📊 GanttManagementSheet</a></li>
+            <li><a href="#gantt-features" onclick="toggleTOC()">✨ Key Features</a></li>
+            <li><a href="#gantt-how" onclick="toggleTOC()">📖 How It Works</a></li>
+            <li><a href="#faq" onclick="toggleTOC()">❓ FAQ</a></li>
         </ul>
+    </aside>
 
-        <div class="use-cases">
-            <strong>Perfect For:</strong>
-            <p>PMO Teams • Program Managers • Agile Release Trains • Cross-Project Dependency Tracking • Executive Reporting</p>
-        </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>🎯 Support Center</h1>
+            <p>Elmiasangga Agna - Your trusted partner for project management solutions</p>
+        </section>
 
-        <h3>How It Works</h3>
-        <ol style="padding-left: 20px; line-height: 2;">
-            <li>Install "Portfolio Manager for Jira" from the Jira Marketplace as a Forge app.</li>
-            <li>Grant the necessary permissions to access your Jira projects and issues.</li>
-            <li>Open the app from your Jira application menu.</li>
-            <li>Navigate between <strong>Projects</strong>, <strong>Dependencies</strong>, and <strong>Roadmap</strong> tabs to analyze your portfolio.</li>
-            <li>Use advanced filters to drill down into specific project leads, statuses, or date ranges.</li>
-        </ol>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">📞 Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Support Email</strong>
+                    <a href="mailto:support@elmiasangga-agna.com">support@elmiasangga-agna.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Organization</strong>
+                    Elmiasangga Agna
+                </div>
+                <div class="contact-item">
+                    <strong>Website</strong>
+                    <a href="https://elmiasangga-agna.com" target="_blank">elmiasangga-agna.com</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>❓ Frequently Asked Questions</h2>
+        <!-- Business Hours -->
+        <section id="business-hours">
+            <h2 class="section-title">🕐 Business Hours</h2>
+            <div class="card">
+                <p><strong>Monday - Sunday:</strong> Open 24 Hours</p>
+            </div>
 
-            <h3>Q: Does this app work with Jira Server or Data Center?</h3>
-            <p>A: Currently, Portfolio Manager is built as a Jira Forge app, which means it is exclusively available for <strong>Jira Cloud</strong>.</p>
+            <h3 class="subsection-title">⚡ Response Time</h3>
+            <div class="alert alert-info">
+                We aim to respond to all support inquiries within <strong>24-48 business hours</strong>.
+            </div>
+        </section>
 
-            <h3>Q: What permissions does the app require?</h3>
-            <p>A: The app requires read access to your Jira projects, issues, and issue links. It does not modify any of your Jira data. All processing happens securely within Atlassian's Forge infrastructure.</p>
+        <!-- Portfolio Manager Section -->
+        <section id="portfolio">
+            <h2 class="section-title">💼 Portfolio Manager for Jira</h2>
+            <div class="card">
+                <p>A powerful Jira Forge application designed to give project managers and team leads a comprehensive, high-level view of their project portfolios. Seamlessly integrated into your Jira environment, it provides interactive dashboards for project health, dependency tracking, and epic roadmaps.</p>
+                <a href="#" class="btn">✓ Available on Jira Marketplace</a>
+            </div>
 
-            <h3>Q: How does the "Circular Dependency" warning work?</h3>
-            <p>A: In the Dependencies tab, the app analyzes the issue links between Epics and Stories. If it detects a loop (e.g., Issue A blocks Issue B, which blocks Issue A), it will display a warning banner to help you resolve the logical conflict.</p>
+            <h3 class="subsection-title" id="portfolio-features">✨ Key Features</h3>
+            <ul class="features-list">
+                <li><strong>Projects Dashboard</strong> – View all projects at a glance with real-time statistics on total, in-progress, done, and blocked issues.</li>
+                <li><strong>Dependency Visualization</strong> – Track issue links (Epics & Stories) across projects with built-in circular dependency detection.</li>
+                <li><strong>Roadmap Timeline</strong> – Visualize Epic timelines with start and due dates, including automatic detection of overlapping schedules.</li>
+                <li><strong>Advanced Filtering & Sorting</strong> – Filter by project lead, status, date ranges, and search by project name or key. Sort data by any column.</li>
+                <li><strong>Real-Time Stats</strong> – Automatically refreshes project statistics in the background to ensure you always have the latest data.</li>
+                <li><strong>Accessibility First</strong> – Full keyboard navigation, screen reader announcements, and Right-to-Left (RTL) language support.</li>
+            </ul>
 
-            <h3>Q: Can I filter projects by specific dates?</h3>
-            <p>A: Yes! The Projects and Roadmap tabs include date range filters. You can filter to see only projects or epics that overlap with a specific start and end date.</p>
+            <div class="alert alert-warning">
+                <strong>Perfect For:</strong> PMO Teams • Program Managers • Agile Release Trains • Cross-Project Dependency Tracking • Executive Reporting
+            </div>
 
-            <h3>Q: Why are some project stats showing "..." or taking time to load?</h3>
-            <p>A: The app fetches real-time statistics for each project. If you have a large number of projects, it may take a few moments to query Jira for all the issue counts. The data refreshes automatically in the background.</p>
-        </div>
+            <h3 class="subsection-title" id="portfolio-how">📖 How It Works</h3>
+            <ol class="steps">
+                <li>Install "Portfolio Manager for Jira" from the Jira Marketplace as a Forge app.</li>
+                <li>Grant the necessary permissions to access your Jira projects and issues.</li>
+                <li>Open the app from your Jira application menu.</li>
+                <li>Navigate between Projects, Dependencies, and Roadmap tabs to analyze your portfolio.</li>
+                <li>Use advanced filters to drill down into specific project leads, statuses, or date ranges.</li>
+            </ol>
+        </section>
 
-        <div class="permissions-note">
-            <strong>🔒 Permissions & Security:</strong> As a Jira Forge app, Portfolio Manager for Jira runs on Atlassian's secure infrastructure. It only requests read access to project metadata, issue details, and issue links to generate your portfolio views. No data is stored outside of Atlassian's environment.
-        </div>
+        <!-- GanttManagementSheet Section -->
+        <section id="gantt">
+            <h2 class="section-title">📊 GanttManagementSheet - Project and Task Planning</h2>
+            <div class="card">
+                <p>Transform your Google Sheets™ into a dynamic project management tool with this powerful Gantt Chart add-on. Perfect for project managers, teams, and freelancers who need professional project visualization without complex software.</p>
+                <a href="#" class="btn btn-secondary">✓ Free with Premium Features</a>
+            </div>
 
-        <h3>GanttManagementSheet - Project and Task Planning</h3>
-        <p class="product-overview">
-            Transform your Google Sheets™ into a dynamic project management tool with this powerful Gantt Chart add-on.
-            Perfect for project managers, teams, and freelancers who need professional project visualization without complex software.
-        </p>
+            <h3 class="subsection-title" id="gantt-features">✨ Key Features</h3>
+            <ul class="features-list">
+                <li><strong>Interactive Gantt Charts</strong> – Automatically plot tasks with start/end dates, durations, progress tracking, assignees, and dependencies</li>
+                <li><strong>One-Click Generation</strong> – Generate professional Gantt charts in seconds with a single click</li>
+                <li><strong>Customizable Settings</strong> – Map spreadsheet columns to task details for seamless integration with your existing workflows</li>
+                <li><strong>Task Dependencies & Milestones</strong> – Visualize critical paths and project bottlenecks</li>
+                <li><strong>Progress Tracking</strong> – Monitor percentage completion for each task</li>
+                <li><strong>Responsive Design</strong> – Easy viewing on any device</li>
+                <li><strong>No Coding Required</strong> – Works directly in Google Sheets™ with an intuitive interface</li>
+            </ul>
 
-        <button onclick="window.location.href='https://workspace.google.com/u/0/marketplace/app/ganttmanagementsheet_project_and_task_pl/368829175641?flow_type=3'" class="button">✓ Free with Premium Features</button>
+            <div class="alert alert-warning">
+                <strong>Perfect For:</strong> Project planning • Agile workflows • Construction timelines • Academic research • Event management • Workflow tracking • Team coordination
+            </div>
 
-        <h3>Key Features</h3>
-        <ul class="feature-list">
-            <li><strong>Interactive Gantt Charts</strong> – Automatically plot tasks with start/end dates, durations, progress tracking, assignees, and dependencies</li>
-            <li><strong>One-Click Generation</strong> – Generate professional Gantt charts in seconds with a single click</li>
-            <li><strong>Customizable Settings</strong> – Map spreadsheet columns to task details for seamless integration with your existing workflows</li>
-            <li><strong>Task Dependencies & Milestones</strong> – Visualize critical paths and project bottlenecks</li>
-            <li><strong>Progress Tracking</strong> – Monitor percentage completion for each task</li>
-            <li><strong>Responsive Design</strong> – Easy viewing on any device</li>
-            <li><strong>No Coding Required</strong> – Works directly in Google Sheets™ with an intuitive interface</li>
-        </ul>
+            <h3 class="subsection-title" id="gantt-how">📖 How It Works</h3>
+            <ol class="steps">
+                <li>Install the add-on from Google Workspace Marketplace</li>
+                <li>Configure your task data in Google Sheets</li>
+                <li>Map your columns to task properties</li>
+                <li>Click to generate your interactive Gantt chart</li>
+                <li>Share and collaborate with your team!</li>
+            </ol>
+        </section>
 
-        <div class="use-cases">
-            <strong>Perfect For:</strong>
-            <p>Project planning • Agile workflows • Construction timelines • Academic research • Event management • Workflow tracking • Team coordination</p>
-        </div>
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2 class="section-title">❓ Frequently Asked Questions</h2>
 
-        <h3>How It Works</h3>
-        <ol style="padding-left: 20px; line-height: 2;">
-            <li>Install the add-on from Google Workspace Marketplace</li>
-            <li>Configure your task data in Google Sheets</li>
-            <li>Map your columns to task properties</li>
-            <li>Click to generate your interactive Gantt chart</li>
-            <li>Share and collaborate with your team!</li>
-        </ol>
+            <h3 class="subsection-title">Portfolio Manager for Jira</h3>
 
-        <div class="card">
-            <h2>❓Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <strong>Q: Does this app work with Jira Server or Data Center?</strong>
+                <p>A: Currently, Portfolio Manager is built as a Jira Forge app, which means it is exclusively available for Jira Cloud.</p>
+            </div>
 
-            <h3>Q: Is GanttManagementSheet free to use?</h3>
-            <p>A: Yes! The core features are completely free. We also offer premium features for advanced users.</p>
+            <div class="faq-item">
+                <strong>Q: What permissions does the app require?</strong>
+                <p>A: The app requires read access to your Jira projects, issues, and issue links. It does not modify any of your Jira data. All processing happens securely within Atlassian's Forge infrastructure.</p>
+            </div>
 
-            <h3>Q: Do I need coding skills to use this add-on?</h3>
-            <p>A: Not at all! GanttManagementSheet is designed to be user-friendly with no coding required. Simply install, configure, and generate charts.</p>
+            <div class="faq-item">
+                <strong>Q: How does the "Circular Dependency" warning work?</strong>
+                <p>A: In the Dependencies tab, the app analyzes the issue links between Epics and Stories. If it detects a loop (e.g., Issue A blocks Issue B, which blocks Issue A), it will display a warning banner to help you resolve the logical conflict.</p>
+            </div>
 
-            <h3>Q: Can I use this with my existing Google Sheets?</h3>
-            <p>A: Absolutely! You can use it with any existing spreadsheet or create a new one specifically for project management.</p>
+            <div class="faq-item">
+                <strong>Q: Can I filter projects by specific dates?</strong>
+                <p>A: Yes! The Projects and Roadmap tabs include date range filters. You can filter to see only projects or epics that overlap with a specific start and end date.</p>
+            </div>
 
-            <h3>Q: How do I install the add-on?</h3>
-            <p>A: Go to Google Workspace Marketplace, search for "GanttManagementSheet", and click "Install". It will be available in your Google Sheets under Extensions menu.</p>
+            <div class="faq-item">
+                <strong>Q: Why are some project stats showing "..." or taking time to load?</strong>
+                <p>A: The app fetches real-time statistics for each project. If you have a large number of projects, it may take a few moments to query Jira for all the issue counts. The data refreshes automatically in the background.</p>
+            </div>
 
-            <h3>Q: Is my data secure?</h3>
-            <p>A: Yes, your data remains in your Google Sheets and is not stored on external servers. We only access the data necessary to generate Gantt charts.</p>
-        </div>
+            <h3 class="subsection-title">GanttManagementSheet</h3>
 
-        <div class="permissions-note">
-            <strong>🔒 Privacy & Permissions:</strong> This add-on requires access to view and manage spreadsheets where it's installed, send emails on your behalf (for notifications), and connect to external services for enhanced functionality. Your data remains secure and is never shared with third parties.
-        </div>
-    </div>
+            <div class="faq-item">
+                <strong>Q: Is GanttManagementSheet free to use?</strong>
+                <p>A: Yes! The core features are completely free. We also offer premium features for advanced users.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: Do I need coding skills to use this add-on?</strong>
+                <p>A: Not at all! GanttManagementSheet is designed to be user-friendly with no coding required. Simply install, configure, and generate charts.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: Can I use this with my existing Google Sheets?</strong>
+                <p>A: Absolutely! You can use it with any existing spreadsheet or create a new one specifically for project management.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: How do I install the add-on?</strong>
+                <p>A: Go to Google Workspace Marketplace, search for "GanttManagementSheet", and click "Install". It will be available in your Google Sheets under Extensions menu.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: Is my data secure?</strong>
+                <p>A: Yes, your data remains in your Google Sheets and is not stored on external servers. We only access the data necessary to generate Gantt charts.</p>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="security">
+            <h2 class="section-title">🔒 Permissions & Security</h2>
+
+            <div class="alert alert-info">
+                <strong>Portfolio Manager for Jira:</strong> As a Jira Forge app, Portfolio Manager for Jira runs on Atlassian's secure infrastructure. It only requests read access to project metadata, issue details, and issue links to generate your portfolio views. No data is stored outside of Atlassian's environment.
+            </div>
+
+            <div class="alert alert-info">
+                <strong>GanttManagementSheet:</strong> This add-on requires access to view and manage spreadsheets where it's installed, send emails on your behalf (for notifications), and connect to external services for enhanced functionality. Your data remains secure and is never shared with third parties.
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Scroll Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+
+            // Active nav link
+            updateActiveNavLink();
+        };
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Toggle Table of Contents
+        function toggleTOC() {
+            const sidebar = document.getElementById('tocSidebar');
+            const overlay = document.getElementById('tocOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('show');
+        }
+
+        // Update active nav link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+                if (navLink) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLink.classList.add('active');
+                    } else {
+                        navLink.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .faq-item, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
