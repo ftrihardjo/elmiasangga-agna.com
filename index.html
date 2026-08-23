@@ -476,7 +476,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio Manager</a></li>
+                <li><a href="#portfolio" class="nav-link">BPMN, Workflow Automation & Portfolio Manager for Jira</a></li>
                 <li><a href="#gantt" class="nav-link">Gantt Sheet</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
@@ -491,7 +491,7 @@
             <li><a href="#home" onclick="toggleTOC()">🏠 Home</a></li>
             <li><a href="#contact" onclick="toggleTOC()">📞 Contact Information</a></li>
             <li><a href="#business-hours" onclick="toggleTOC()">🕐 Business Hours</a></li>
-            <li><a href="#portfolio" onclick="toggleTOC()">💼 Portfolio Manager for Jira</a></li>
+            <li><a href="#portfolio" onclick="toggleTOC()">💼 BPMN, Workflow Automation & Portfolio Manager for Jira</a></li>
             <li><a href="#portfolio-features" onclick="toggleTOC()">✨ Key Features</a></li>
             <li><a href="#portfolio-how" onclick="toggleTOC()"> How It Works</a></li>
             <li><a href="#gantt" onclick="toggleTOC()">📊 GanttManagementSheet</a></li>
@@ -541,35 +541,38 @@
             </div>
         </section>
 
-        <!-- Portfolio Manager Section -->
         <section id="portfolio">
-            <h2 class="section-title">💼 Portfolio Manager for Jira</h2>
+            <h2 class="section-title">💼 BPMN, Workflow Automation & Portfolio Manager for Jira</h2>
             <div class="card">
-                <p>A powerful Jira Forge application designed to give project managers and team leads a comprehensive, high-level view of their project portfolios. Seamlessly integrated into your Jira environment, it provides interactive dashboards for project health, dependency tracking, and epic roadmaps.</p>
-                <a href="https://marketplace.atlassian.com/apps/1862931111/portfolio-manager-for-jira" class="btn">✓ Available on Jira Marketplace</a>
+                <p>A powerful Jira Forge application designed to give project managers and team leads a comprehensive, high-level view of their project portfolios. Seamlessly integrated into your Jira environment, it provides interactive dashboards for project health, dependency tracking, epic roadmaps, portfolio-wide risk summaries, and BPMN-based process automation.</p>
+                <a href="https://marketplace.atlassian.com/apps/1862931111/bpmn-workflow-automation-portfolio-manager-for-jira" class="btn">✓ Available on Jira Marketplace</a>
             </div>
 
             <h3 class="subsection-title" id="portfolio-features">✨ Key Features</h3>
             <ul class="features-list">
-                <li><strong>Projects Dashboard</strong> – View all projects at a glance with real-time statistics on total, in-progress, done, and blocked issues.</li>
-                <li><strong>Dependency Visualization</strong> – Track issue links (Epics & Stories) across projects with built-in circular dependency detection.</li>
+                <li><strong>Projects Dashboard</strong> – View all projects at a glance with real-time statistics on total, in-progress, done, and blocked issues, plus a 0–100 risk score per project.</li>
+                <li><strong>Dependency Visualization</strong> – Track issue links (Epics & Stories) across projects with an interactive dependency graph and built-in circular dependency detection.</li>
                 <li><strong>Roadmap Timeline</strong> – Visualize Epic timelines with start and due dates, including automatic detection of overlapping schedules.</li>
+                <li><strong>Portfolio Summary</strong> – An auto-generated narrative overview of portfolio health and highest-risk projects, exportable as a PDF.</li>
+                <li><strong>BPMN Diagrams</strong> – Model business processes with a full BPMN editor, version history with diffing, and Jira issue linking.</li>
+                <li><strong>DMN Automation Rules</strong> – Attach decision-table-driven automation rules to any BPMN diagram to trigger actions — such as transitioning an issue, adding a comment, or calling a webhook — when a Jira issue changes.</li>
                 <li><strong>Advanced Filtering & Sorting</strong> – Filter by project lead, status, date ranges, and search by project name or key. Sort data by any column.</li>
                 <li><strong>Real-Time Stats</strong> – Automatically refreshes project statistics in the background to ensure you always have the latest data.</li>
                 <li><strong>Accessibility First</strong> – Full keyboard navigation, screen reader announcements, and Right-to-Left (RTL) language support.</li>
             </ul>
 
             <div class="alert alert-warning">
-                <strong>Perfect For:</strong> PMO Teams • Program Managers • Agile Release Trains • Cross-Project Dependency Tracking • Executive Reporting
+                <strong>Perfect For:</strong> PMO Teams • Program Managers • Agile Release Trains • Cross-Project Dependency Tracking • Executive Reporting • Process Automation
             </div>
 
             <h3 class="subsection-title" id="portfolio-how">📖 How It Works</h3>
             <ol class="steps">
-                <li>Install "Portfolio Manager for Jira" from the Jira Marketplace as a Forge app.</li>
+                <li>Install "BPMN, Workflow Automation & Portfolio Manager for Jira" from the Jira Marketplace.</li>
                 <li>Grant the necessary permissions to access your Jira projects and issues.</li>
                 <li>Open the app from your Jira application menu.</li>
-                <li>Navigate between Projects, Dependencies, and Roadmap tabs to analyze your portfolio.</li>
+                <li>Navigate between Projects, Dependencies, Roadmap, Summary, and BPMN tabs to analyze your portfolio and model processes.</li>
                 <li>Use advanced filters to drill down into specific project leads, statuses, or date ranges.</li>
+                <li>Optionally, build DMN Automation Rules on a BPMN diagram to trigger actions automatically when Jira issues change.</li>
             </ol>
         </section>
 
@@ -610,21 +613,31 @@
         <section id="faq">
             <h2 class="section-title">❓ Frequently Asked Questions</h2>
 
-            <h3 class="subsection-title">Portfolio Manager for Jira</h3>
+            <h3 class="subsection-title">BPMN, Workflow Automation & Portfolio Manager for Jira</h3>
 
             <div class="faq-item">
                 <strong>Q: Does this app work with Jira Server or Data Center?</strong>
-                <p>A: Currently, Portfolio Manager is built as a Jira Forge app, which means it is exclusively available for Jira Cloud.</p>
+                <p>A: Currently, BPMN, Workflow Automation & Portfolio Manager for Jira is built as a Jira Forge app, which means it is exclusively available for Jira Cloud.</p>
             </div>
 
             <div class="faq-item">
                 <strong>Q: What permissions does the app require?</strong>
-                <p>A: The app requires read access to your Jira projects, issues, and issue links. It does not modify any of your Jira data. All processing happens securely within Atlassian's Forge infrastructure.</p>
+                <p>A: The app requires read access to your Jira projects, issues, and issue links to generate your portfolio views, plus BPMN diagram and DMN automation rule storage. If you configure DMN Automation Rules, the actions you define (e.g. transitioning an issue, adding a comment, setting a field) will write to your Jira issues when their trigger conditions are met — the app never modifies your data outside of rules you've explicitly built and enabled yourself.</p>
             </div>
 
             <div class="faq-item">
                 <strong>Q: How does the "Circular Dependency" warning work?</strong>
-                <p>A: In the Dependencies tab, the app analyzes the issue links between Epics and Stories. If it detects a loop (e.g., Issue A blocks Issue B, which blocks Issue A), it will display a warning banner to help you resolve the logical conflict.</p>
+                <p>A: In the Dependencies tab, the app analyzes the issue links between Epics and Stories. If it detects a loop (e.g., Issue A blocks Issue B, which blocks Issue A), it will display a warning banner and outline the affected issues on the dependency graph to help you resolve the logical conflict.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: How is a project's Risk score calculated?</strong>
+                <p>A: Each project gets a 0–100 score based on its blocked-issue ratio and number of overdue epics. Scores are shown in the Projects table and summarized on the Summary tab's Highest-Risk Projects list; projects involved in a circular dependency are flagged separately.</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: What are BPMN Diagrams and DMN Automation Rules?</strong>
+                <p>A: The BPMN tab lets you model business processes with a standard BPMN editor, linking diagram elements directly to Jira issues and keeping a versioned history of every save. Each diagram also has an Automation sub-tab where you can build DMN-style decision-table rules that trigger actions (transitions, comments, field updates, webhooks, and more) automatically when a linked Jira issue changes.</p>
             </div>
 
             <div class="faq-item">
@@ -670,7 +683,7 @@
             <h2 class="section-title">🔒 Permissions & Security</h2>
 
             <div class="alert alert-info">
-                <strong>Portfolio Manager for Jira:</strong> As a Jira Forge app, Portfolio Manager for Jira runs on Atlassian's secure infrastructure. It only requests read access to project metadata, issue details, and issue links to generate your portfolio views. No data is stored outside of Atlassian's environment.
+                <strong>BPMN, Workflow Automation & Portfolio Manager for Jira:</strong> As a Jira Forge app, BPMN, Workflow Automation & Portfolio Manager for Jira runs on Atlassian's secure infrastructure. It reads project metadata, issue details, and issue links to generate your portfolio views, and stores the BPMN diagrams and DMN automation rules you create. If you build and enable DMN Automation Rules, their configured actions will write to the Jira issues they target when triggered — the app otherwise does not modify your Jira data. No data is stored outside of Atlassian's environment.
             </div>
 
             <div class="alert alert-info">
